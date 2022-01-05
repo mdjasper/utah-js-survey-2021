@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>2021 UtahJS pay, education, & work survey results</title>
+    <meta name="description" content="Results and analysis of a 2021 survey of Utah JavaScript developers compensation and career progression.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png">
+    <script src="//code.highcharts.com/highcharts.js"></script>
+    <script src="//code.highcharts.com/highcharts-more.js"></script>
+    <script src="//code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/broken-axis.js"></script>
+    <script src="//code.highcharts.com/modules/export-data.js"></script>
+    <script src="//code.highcharts.com/maps/modules/map.js"></script>
+    <script src="//code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="//code.highcharts.com/mapdata/countries/us/us-ut-all.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1><img src="logo.png" alt="" width="30"> 2021 UtahJS Survey Results</h1>
+      <p>In December of 2021, a survey of UtahJS members was conducted through the group's slack channel around the topics of compensation, education, work locations, Covid-19, and other issues. There were 204 participants. Presented here are an analysis of the results, as well as some commentary, and a link to the raw result data.</p>
+      <p>Jump To:</p>
+      <ul>
+        <li><a href="#demographics">Demographics</a></li>
+        <li><a href="#compensation">Compensation</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#raises">Raises</a></li>
+        <li><a href="#covid-19">Covid-19 Effects</a></li>
+        <li><a href="#previous">Previous years</a></li>
+        <li><a href="#about">Link to data & licenses</a></li>
+      </ul>
+
+      <p><em>Tip: For charts with lots of data, hover over (or click) a chart series in the label to see those points highlighted.</em></p>
+
+      <h2 id="demographics">Demographics</h2>
+      <h3>I would consider myself a...</h3>
+      <p>This year, members were asked to bucket themselves in to job-titles, such as "Junior Developer" or "Engineering Manager"</p>
+
+      <div id="job-titles-chart" class="chart"></div>
+
+      <h3>How much experience do people have in different roles?</h3>
+      <div id="job-titles-experience" class="chart"></div>
+
+      <h3>What are the experience levels for all of the survey respondents?</h3>
+
+      <div id="overall-experience" class="chart"></div>
+
+      <h3>Gender of respondents...</h3>
+
+      <div id="gender" class="chart"></div>
+
+      <h2 id="compensation">Compensation</h2>
+      <p>This year, the survey included compensation questions about base pay (cash compensation), liquid equity (stock), non-reoccurring bonuses, pay changes from changing employers, as well as important benefits.</p>
+
+      <h3>Cash Compensation aka Salary</h3>
+
+      <div id="total-comp-with-nones" class="chart"></div>
+
+      <h3>How does compensation change with experience?</h3>
+      <div id="total-comp-by-experience" class="chart full"></div>
+      <h4>Comparison to previous years</h4>
+      <div id="comp-comparison" class="chart full"></div>
+      <p>Tip: Hover over each year to highlight them individually</p>
+
+      <h3>Total Comp (sum of salary, bonuses, and equity)</h3>
+      <p>118 of 203 respondents (58%) received either a cash bonus, liquid equity, or both</p>
+      <div id="received-non-cash" class="chart"></div>
+      <div id="total-comp-by-experience-2" class="chart full"></div>
+      <p>Of those that did receive equity or a cash bonus, what was it?</p>
+      <div id="non-cash-comp" class="chart"></div>
+
+      <h3>How does gender relate to compensation?</h3>
+      <div id="salary-by-gender" class="chart full"></div>
+
+      <h3>How does job title relate to compensation?</h3>
+      <div id="comp-by-title" class="chart"></div>
+      <h2 id="education">Education</h2>
+      <h3>What is the distribution of education types?</h3>
+      <p>Survey respondents could choose multiple options from:</p>
+      <ul>
+        <li>Self Taught (49)</li>
+        <li>Some College (35)</li>
+        <li>Bootcamp (88)</li>
+        <li>Bachelor's Degree (110)</li>
+        <li>Graduate Degree (15)</li>
+      </ul>
+      <img src="edu-breakdown.png" width="100%" alt="education breakdown graphic"/>
+      <p>It is <a href="https://stackoverflow.com/questions/32440128/nice-looking-five-sets-venn-diagrams-in-r/40048520#40048520" target="_blank">really challenging to represent the overlap of 5 options topologically</a>, so some of the smaller overlaps have been omitted in the above graphic.</p>
+      <h3>Do different education types have different compensation distributions?</h3>
+      <p>In the past, I've usually had a box plot showing the difference in compensation between, say, Bootcamp grads and Bachelor's Degree holders. After seeing several years of data, I now believe that this variation is mostly explained by experience. As time goes on, and the selection bias continues to work against bootcamp grads, I believe those that continue in their career will have comp on-par with their peers.</p>
+      <div id="comp-by-edu" class="chart full"></div>
+      <h3>What type of degrees do respondents have?</h3>
+      <div id="degree-type" class="chart"></div>
+      <p>While Computer Science Bachelors and Masters degrees remain the largest type of degree held, as a whole, they are a minority to non-computer-science degree holders.</p>
+      <h4>All degrees</h4>
+      <ul class="column-list">
+        <li>Computer Science (37)</li>
+        <li>Information Systems (12)</li>
+        <li>Software Engineering (7)</li>
+        <li>Mathematics (5)</li>
+        <li>English (4)</li>
+        <li>Communications (4)</li>
+        <li>Web Development (3)</li>
+        <li>Marketing (3)</li>
+        <li>Information Technology (3)</li>
+        <li>Electrical Engineering (3)</li>
+        <li>Economics (3)</li>
+        <li>Business Management (3)</li>
+        <li>Spanish (2)</li>
+        <li>Political Science (2)</li>
+        <li>Microbiology  (2)</li>
+        <li>Management Information Systems (2)</li>
+        <li>Digital Media (2)</li>
+        <li>Computer Science  (2)</li>
+        <li>Computer Information Technology (2)</li>
+        <li>Computer Engineering (2)</li>
+        <li>Business Administration (2)</li>
+        <li>Biology (2)</li>
+        <li>Visual Comms: Design (1)</li>
+        <li>Statistics (1)</li>
+        <li>Sociology (1)</li>
+        <li>Social Science (1)</li>
+        <li>Physics (1)</li>
+        <li>Outdoor Recreation and Geology (1)</li>
+        <li>Neuroscience (1)</li>
+        <li>Mechanical Engineering  (1)</li>
+        <li>Linguistics (1)</li>
+        <li>Korean (1)</li>
+        <li>Interdisciplinary studies (1)</li>
+        <li>Information Systems  (1)</li>
+        <li>History (1)</li>
+        <li>Google Searching (1)</li>
+        <li>GIS (1)</li>
+        <li>Geography (1)</li>
+        <li>General Studies (1)</li>
+        <li>Game Development (1)</li>
+        <li>Environmental Science (1)</li>
+        <li>Entreprenuership (1)</li>
+        <li>Dont have one (1)</li>
+        <li>Cybersecurity (1)</li>
+        <li>Civil Engineering (1)</li>
+        <li>Business management  (1)</li>
+        <li>Bootcamp Certificate (1)</li>
+        <li>Bioinformatics (1)</li>
+        <li>Biochemistry (1)</li>
+        <li>ASL (1)</li>
+        <li>Advertising (1)</li>
+        <li>Accounting (1)</li>
+      </ul>
+
+      <h2 id="location">Location</h2>
+
+      <h3>Where do respondents live?</h3>
+      <div id="live-location" class="chart"></div>
+
+      <p>21 (10%) Respondents live remotely</p>
+      <h3>Where do respondents work?</h3>
+      <div id="work-location" class="chart"></div>
+      <p>49 Respondents work remotely</p>
+      <h3>Utah vs. Remote Salary</h3>
+      <div id="utah-vs-remote-pay" class="chart full"></div>
+      <div id="utah-vs-remote-pay-tc" class="chart full"></div>
+
+      <h2 id="benefits">Benefits</h2>
+      <h3>What are common benefits?</h3>
+      <p>Respondents were asked about other benefits they thought were particularly good. Most common were:</p>
+      <ul>
+        <li>100% paid health insurance</li>
+        <li>Unlimited PTO</li>
+        <li>Flexible schedule</li>
+        <li>Paid parental leave</li>
+        <li>Education stipends &amp; Reimbursements</li>
+        <li>401k Matching</li>
+      </ul>
+
+      <p>Some new and upcoming benefits this year include:</p>
+      <ul>
+        <li>4-day work week</li>
+        <li>Home office &amp; Lunch stipend</li>
+        <li>Travel Voucher</li>
+      </ul>
+      <h2 id="raises">Raises</h2>
+      <h3>How many people received a raise this year?</h3>
+      <div id="raise-received" class="chart"></div>
+
+      <h3>How does receiving a raise at your current employer compare with moving to a new employer?</h3>
+      <div id="raise-vs-move-box" class="chart"></div>
+      <h2 id="covid-19">Covid-19</h2>
+      <p>This year I asked some questions specifically about Covid-19 and the changes in work that have happened as a result.</p>
+      <p>Very few people reported their employment being affected by Covid-19. Of those few that did, they were equally split between "received no raise because of the pandemic," and "received an extra raise because of the worker shortage."</p>
+      <h3>Home office vs. Office office</h3>
+      <div id="working-from" class="chart"></div>
+      <h2 id="previous">Previous Years Results</h2>
+      <p>This survey has been conducted since 2017:</p>
+      <ul>
+        <li>2020: <a href="https://mdjasper.github.io/utah-js-survey-2020/" target="_blank">https://mdjasper.github.io/utah-js-survey-2020/</a></li>
+        <li>2019: <a href="https://mdjasper.github.io/utah-js-survey-2019/" target="_blank">https://mdjasper.github.io/utah-js-survey-2019/</a></li>
+        <li>2018: <a href="https://mdjasper.github.io/utah-js-pay-data-2018/" target="_blank">https://mdjasper.github.io/utah-js-pay-data-2018/</a></li>
+        <li>2017: <a href="https://mdjasper.github.io/utah-js-pay-data/" target="_blank">https://mdjasper.github.io/utah-js-pay-data/</a></li>
+      </ul>
+    </main>
+    <footer>
+      <h2 id="about">About</h2>
+
+      <p>The survey was open December 13-17, 2021, and data was collected from members of the UtahJS Slack channel using Google Forms. The raw data can be publicly accessed <a href="https://docs.google.com/spreadsheets/d/1ydtAhmB9xAvWfg6ksDZF1ER-Un2aATaU7yHid-ba5bQ/edit?usp=sharing" target="_blank">here in Google Sheets</a></p>
+
+      <p>The survey was conducted, and this website was created by <a href="https://www.michaeljasper.com" target="_blank">Michael Jasper</a>. Additional statistical analysis was provided by Brian Jasper.</p>
+
+      <h2>License and Copyright</h2>
+
+      <p>TL;DR to be as open as possible: the dataset is Open Database licenced, and the website, analysis, and commentary are MIT licenced</p>
+
+      <div class="copyright">
+        <p>This dataset "2020 UtahJS Survey Results" is made available under the Open Database License: <a href="http://opendatacommons.org/licenses/odbl/1.0/" target="_blank">http://opendatacommons.org/licenses/odbl/1.0/</a>. Any rights in individual contents of the database are licensed under the Database Contents License: <a href="http://opendatacommons.org/licenses/dbcl/1.0/" target="_blank">http://opendatacommons.org/licenses/dbcl/1.0/</a></p>
+      </div>
+      <p>This website, commentary, and analysis are made available under the MIT license:</p>
+
+      <div class="copyright">
+        <p>Copyright 2020 Michael Jasper</p>
+
+        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+        <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </div>
+    </footer>
+    <script src="charts.js"></script>
+  </body>
+</html>
